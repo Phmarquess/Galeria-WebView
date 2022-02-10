@@ -1,0 +1,47 @@
+<html>
+   <head>
+       <link rel="stylesheet" type="text/css" href="styles.css">
+    
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximumm-scale=1.0" />
+
+    </head>
+    <body>
+        <div class="header">
+            Galeria Aleatoria
+        </div>
+        <div id="galeria" class="galeria">
+            
+        </div>
+        <div class="btn-load"><button id="carregar-mais">Carregar Mais</button></div>
+
+        <script>
+            var galeria = document.getElementById('galeria');
+            var quantidadeImagensIniciais = 1;
+            var carregarmais = document.getElementById('carregar-mais'); 
+            var controle = 1;
+
+            for(var i=0;i<quantidadeImagensIniciais;i++){
+                galeria.innerHTML+='<img src="https://picsum.photos/600?random='+i+'"/>';
+            }
+            carregarmais.addEventListener('click',()=>{
+    
+                for(var i=0;i<quantidadeImagensIniciais;i++){
+
+                let image = document.createElement('img');
+                image.src = 'https://picsum.photos/600?random='+controle;
+                carregarmais.innerHTML= "Carregando....";
+                image.addEventListener('load',function(){
+                    carregarmais.innerHTML="Carregar Mais";
+
+                })
+
+                galeria.appendChild(image);
+                controle++;
+            }
+            })
+
+        </script>
+        
+    </body>
+</html>
